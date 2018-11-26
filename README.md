@@ -42,52 +42,55 @@ Returns three classes: ```Model```, ```UserModel```, and ```DeviceModel```:
 ### HQ.Model Methods
 All of these methods can be extended or redefined through normal model inheritance.
 
-#### .create(data, returning, onDone(err, data, status, message) )
+```
+create(data, returning, onDone(err, data, status, message) )
 
-#### .select(returning, onDone(err, data, status) )
+select(returning, onDone(err, data, status) )
 
-#### .findAll(where, returning, onDone(err, data, status) )
+findAll(where, returning, onDone(err, data, status) )
 
-#### .find(where, returning, onDone(err, data, status) )
+find(where, returning, onDone(err, data, status) )
 
-#### .findById(id, returning, onDone(err, data, status) )
+findById(id, returning, onDone(err, data, status) )
 
-#### .findOrCreate(data, returning, onDone(err, data, status, message) )
+findOrCreate(data, returning, onDone(err, data, status, message) )
 
-#### .updateAll(where, data, returning, onDone(err, data, status, message) )
+updateAll(where, data, returning, onDone(err, data, status, message) )
 
-#### .update(where, data, returning, onDone(err, data, status, message) )
+update(where, data, returning, onDone(err, data, status, message) )
 
-#### .destroy(where, onDone(err, data, status) )
-
+destroy(where, onDone(err, data, status) )
+```
 
 ### HQ.UserModel Methods
 All of these methods can be extended or redefined through normal model inheritance. (These all are in addition to those available in the Model class.)
 
-#### .generatePassword(password)
+```
+generatePassword(password)
 
-#### .passwordMatches(password, hash)
+passwordMatches(password, hash)
 
-#### .safe(data)
+safe(data)
 
-#### .validateLoginAndFind(email, password, onDone(err, data, status) )
-
+validateLoginAndFind(email, password, onDone(err, data, status) )
+```
 
 ### HQ.DeviceModel Methods
 All of these methods can be extended or redefined through normal model inheritance. (These all are in addition to those available in the Model class.)
 
-#### generateToken()
+```
+generateToken()
 
-#### timeFormatted(m)
+timeFormatted(m)
 
-#### dataForCreate(req, user_id)
+dataForCreate(req, user_id)
 
-#### getTokenFromReq(req, header) 
+getTokenFromReq(req, header) 
 
-#### findByActiveToken(token, returning, onDone(err, data, status) )
+findByActiveToken(token, returning, onDone(err, data, status) )
 
-#### expireAllByUserId(user_id, returning, onDone(err, data, status, message) )
-
+expireAllByUserId(user_id, returning, onDone(err, data, status, message) )
+```
 
 ### Example
 Comes with a fully fleshed out example, so you can see this in action and start implementing in your project.
