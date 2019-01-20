@@ -36,6 +36,23 @@ module.exports = function(knex) {
 				})
 		}
 
+		batchCreate(data, onDone /* (err, data) */) {
+			if (this.timestamps.enabled === true) {
+				data[this.timestamps.created] = knex.fn.now()
+				data[this.timestamps.updated] = knex.fn.now()
+			}
+			
+			var query =	this.knex()
+				.insert(data)
+				.toString()
+				+ ' ON CONFLICT ON CONSTRAINT ' + this.tableName + '_pkey DO NOTHING'
+
+			knex.raw(query)
+				.asCallback((err, rows) => {
+					return onDone(err, rows)
+				})
+		}
+
 		select(returning, onDone /* (err, data, status) */) {
 			this.knex()
 				.select(returning || '*')

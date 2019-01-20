@@ -45,6 +45,9 @@ All of these methods can be extended or redefined through normal model inheritan
 ```
 create(data, returning, onDone(err, data, status, message) )
 
+batchCreate(data, onDone(err, data) )
+/ /where on conflict, the row attempted to be inserted does nothing
+
 select(returning, onDone(err, data, status) )
 
 findAll(where, returning, onDone(err, data, status) )
