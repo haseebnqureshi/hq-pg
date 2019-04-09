@@ -1,6 +1,6 @@
 {
   "name": "hq-pg",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Lightweight modeling and express routes example for PostgreSQL data",
   "main": "index.js",
   "scripts": {

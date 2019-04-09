@@ -36,7 +36,7 @@ module.exports = function(knex) {
 				})
 		}
 
-		batchCreate(data, onDone /* (err, data) */) {
+		batchCreate(data, filter /* func(query) */, onDone /* (err, data) */) {
 			if (this.timestamps.enabled === true) {
 				data[this.timestamps.created] = knex.fn.now()
 				data[this.timestamps.updated] = knex.fn.now()
@@ -46,6 +46,10 @@ module.exports = function(knex) {
 				.insert(data)
 				.toString()
 				+ ' ON CONFLICT ON CONSTRAINT ' + this.tableName + '_pkey DO NOTHING'
+
+			if (filter) {
+				query = filter(query)
+			}
 
 			knex.raw(query)
 				.asCallback((err, rows) => {
